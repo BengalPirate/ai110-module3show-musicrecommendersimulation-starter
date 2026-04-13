@@ -119,15 +119,21 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
+### Data Limitations
+- **Small catalog**: Only 25 songs means limited variety and potential for repetitive recommendations
+- **Genre imbalance**: Pop and lofi have more representation (3-4 songs each) while most genres have only 1 song, creating bias toward well-represented genres
+- **No cultural context**: The system doesn't understand lyrics, language, cultural significance, or artist reputation
 
-Examples:
+### Algorithmic Biases
+- **Genre weight dominance**: The +2.0 genre bonus means users may get trapped in a "filter bubble" - always seeing their preferred genre even when other genres might match their mood/energy better
+- **Energy-centric**: Heavy emphasis on energy similarity may ignore users who care more about tempo, danceability, or lyrical themes
+- **Binary acousticness**: The 0.6 threshold for "high acousticness" is arbitrary and may misclassify songs
+- **Cold start problem**: New users without established preferences get no personalization
 
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+### Fairness Concerns
+- **Underrepresented genres**: A user who likes country, gothic, or classical music has very limited options (1 song each)
+- **Mood diversity**: "Happy" is overrepresented compared to "sad," potentially marginalizing users seeking emotional depth
+- **Artist diversity**: Some artists (LoRoom, Neon Echo) appear multiple times, creating potential for over-recommendation of certain artists
 
 ---
 
