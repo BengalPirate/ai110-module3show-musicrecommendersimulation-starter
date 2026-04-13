@@ -88,11 +88,32 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
+### Profile Comparison Experiments
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+**1. High-Energy Pop Fan vs. Chill Lofi Listener**
+- **Pop Fan Results**: Top recommendation was "Sunrise City" (score: 4.47) - perfect genre + mood + energy match
+- **Lofi Listener Results**: Top recommendations were all lofi tracks with high acousticness
+- **Observation**: The system successfully differentiates between high-energy and low-energy preferences. Genre matching has strong influence (2.0 points) which helps surface the right category.
+
+**2. Intense Rock vs. Energetic EDM**
+- **Rock Profile**: "Storm Runner" scored 4.98 with perfect genre/mood/energy alignment
+- **EDM Profile**: "Digital Dreams" scored 5.40 (highest across all tests) due to all factors aligning including valence
+- **Observation**: Both prefer high energy (0.9+) but genre match correctly separates rock from EDM. The acousticness penalty/bonus also helps distinguish electronic (EDM) from guitar-driven (rock) music.
+
+**3. Edge Case - Melancholic Blues with Low Energy**
+- **Result**: "Rainy Day Blues" scored 4.48 - exactly what we'd expect
+- **Observation**: The system handles users with sad moods appropriately. When only 1 song exists in the preferred genre, the system falls back to energy similarity, suggesting ambient and classical tracks with similar low energy levels.
+
+### Weight Adjustment Experiments
+
+**Baseline Weights**:
+- Genre match: +2.0
+- Mood match: +1.0
+- Energy similarity: up to +1.5
+- Acousticness bonus: +0.5
+- Valence similarity: up to +0.5
+
+**Finding**: Genre weight of 2.0 provides strong but not overwhelming influence. Songs can still rank high (3.0-4.0) without a genre match if they nail mood and energy. This creates a good balance between filtering by category and discovering cross-genre recommendations.
 
 ---
 
