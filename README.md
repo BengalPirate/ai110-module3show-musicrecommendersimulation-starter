@@ -17,17 +17,37 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
+This music recommender simulates how platforms like Spotify and TikTok predict what users will enjoy next. Real-world recommendation systems typically use two main approaches:
 
-Some prompts to answer:
+1. **Collaborative Filtering**: Uses behavior from other users (e.g., "people who liked Song A also liked Song B")
+2. **Content-Based Filtering**: Uses song attributes like genre, mood, energy, and tempo to match user preferences
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+Our simulation uses a **content-based approach** with the following design:
 
-You can include a simple diagram or bullet list if helpful.
+### Song Features
+Each song in our catalog includes:
+- **Categorical**: genre, mood, artist, title
+- **Numerical**: energy (0.0-1.0), tempo_bpm, valence (happiness), danceability, acousticness
+
+### User Profile
+The user profile captures taste preferences:
+- `favorite_genre`: preferred music genre (e.g., "pop", "rock", "lofi")
+- `favorite_mood`: desired emotional vibe (e.g., "happy", "chill", "intense")
+- `target_energy`: energy level preference (0.0-1.0 scale)
+- `likes_acoustic`: preference for acoustic vs. electronic sounds
+
+### Scoring Algorithm ("Algorithm Recipe")
+The recommender scores each song using a weighted point system:
+- **+2.0 points** for exact genre match
+- **+1.0 point** for exact mood match
+- **Similarity score** based on energy proximity (closer = higher score)
+- **Bonus/penalty** based on acousticness preference
+
+### Ranking Process
+1. Load all songs from the catalog (CSV file)
+2. For each song, calculate a score using the user's profile
+3. Sort songs by score (highest to lowest)
+4. Return the top K recommendations with explanations
 
 ---
 
