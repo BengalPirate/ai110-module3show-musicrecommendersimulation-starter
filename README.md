@@ -139,14 +139,17 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Reflection
 
-Read and complete `model_card.md`:
+Read the complete [**Model Card**](model_card.md) for full documentation.
 
-[**Model Card**](model_card.md)
+### What I Learned About Recommenders
 
-Write 1 to 2 paragraphs here about what you learned:
+This project fundamentally changed how I understand recommendation systems. I learned that **data becomes predictions through weighted scoring**—each song attribute (genre, mood, energy) contributes points based on how closely it matches user preferences, and the system simply ranks songs by total score. What seemed like "AI magic" is actually transparent mathematics: genre match (+2.0) + mood match (+1.0) + energy similarity (+1.5) = a personalized recommendation.
 
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
+The most important insight was recognizing where **bias enters the system**. Even though my algorithm treats all genres mathematically equal, users who like pop or lofi have a better experience because those genres have more songs in the catalog. This taught me that fairness isn't just about writing unbiased code—it's about ensuring equal representation in the training data. A system can be algorithmically "fair" but still produce unfair outcomes if the dataset itself is imbalanced.
+
+I was also surprised by the **filter bubble effect** I unintentionally created. By giving genre a +2.0 weight, I made it nearly impossible for pop fans to discover jazz, even when mood and energy perfectly aligned. Real platforms like Spotify face this same challenge: how do you balance giving users what they ask for versus introducing them to new music they might love? This project showed me that recommendation systems aren't neutral—they actively shape what we discover (or don't discover).
+
+Finally, building the "Because" explanations made me realize how valuable **transparency** is. When my system says "Genre match: lofi (+2.0); Mood match: chill (+1.0)," users can understand and trust the recommendation. Most real-world systems hide this logic, but this project convinced me that users deserve to see how decisions are made, especially when those decisions influence what culture and art they consume.
 
 
 ---
