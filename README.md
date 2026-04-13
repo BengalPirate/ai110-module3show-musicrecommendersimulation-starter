@@ -2,16 +2,23 @@
 
 ## Project Summary
 
-In this project you will build and explain a small music recommender system.
+**MoodMatch Recommender v1.0** is a content-based music recommendation system that suggests songs based on user taste profiles. This educational simulation demonstrates how platforms like Spotify and TikTok transform user preferences into personalized recommendations.
 
-Your goal is to:
+### What This System Does
 
-- Represent songs and a user "taste profile" as data
-- Design a scoring rule that turns that data into recommendations
-- Evaluate what your system gets right and wrong
-- Reflect on how this mirrors real world AI recommenders
+This recommender:
+- **Analyzes 25 songs** across diverse genres (pop, lofi, rock, jazz, EDM, metal, blues, classical, and more)
+- **Scores each song** using a weighted algorithm that considers genre match (+2.0 pts), mood match (+1.0 pt), energy similarity (up to +1.5 pts), acousticness preference (+0.5 pts), and valence similarity (up to +0.5 pts)
+- **Ranks songs** from highest to lowest score and returns the top 5 recommendations
+- **Explains why** each song was recommended with transparent scoring breakdowns
 
-Replace this paragraph with your own summary of what your version does.
+### Key Learning Outcomes
+
+Through building and testing this system, I explored:
+- How **content-based filtering** works vs. collaborative filtering
+- How **data imbalance** creates bias even when algorithms are mathematically fair
+- How **weighted scoring** can create "filter bubbles" that limit musical discovery
+- Why **transparency** matters in AI systems that influence what culture we consume
 
 ---
 
